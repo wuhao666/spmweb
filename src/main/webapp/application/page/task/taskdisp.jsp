@@ -4,33 +4,38 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<base href="<%=basePath%>">
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <title>任务详细信息</title>
-    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="application/css/style.css" rel="stylesheet" />
     <script>
-        var BaseUrl = "<%= basePath %>";
+        Config = {
+            BaseUrl: "http://localhost:18568/",
+            currentUser: "xxxx@hylink.com"
+        }
     </script>
+
 </head>
 <body>
     <header class="header">
         <div class="datavenus left">
-            <img src="../../img/datavenus.png" width="176" height="31" />
+            <img src="application/img/datavenus.png" width="176" height="31" />
         </div>
         <div class="info right">
             <ul class="info-list">
                 <li>
-                    <span class="account">xxxx@hylink.com</span>
+                    <span class="account"></span>
                 </li>
                 <li>
                     <span class="line"></span>
                 </li>
                 <li>
                     <span class="logout">
-                        <a href="<%=basePath%>/logout.do" class="link">
+                        <a href="" class="link">
                             退出
                         </a>
                     </span>
@@ -42,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <ul>
             <li class="on">
                 <a href="../task/taskmanager.html">
-                    <img src="../../img/l-manager.png" width="21" height="21" />
+                    <img src="application/img/l-manager.png" width="21" height="21" />
                     <span>任务管理</span>
                 </a>
             </li>
@@ -51,13 +56,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="main">
         <div class="main-header">
             <span class="main-header-title">
-                <input type="button" class="btn btn-submit" value="返回" />
+                <input type="button" class="btn btn-submit" data-bind="click:returnPage" value="返回" />
             </span>
         </div>
         <div class="main-body" id="tab-main">
             <div class="main-section">
                 <div class="main-section-header">
-                    <img width="17" height="17" src="../../img/i-1.png" />任务概览
+                    <img width="17" height="17" src="application/img/i-1.png" />任务概览
                 </div>
                 <div class="main-section-body text-center">
                     <table class="table">
@@ -79,9 +84,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     预估量级
                                 </td>
                                 <td>
-                                    预估时间
-                                </td>
-                                <td>
                                     执行周期
                                 </td>
                                 <td>
@@ -94,33 +96,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </thead>
                         <tbody>
                             <tr>
+                                <td data-bind="text:task.taskId"></td>
+                                <td data-bind="text:task.taskName"></td>
                                 <td>
-                                    C201512220001
+                                    <span data-bind="text:task.webName"></span>
+                                    -
+                                    <span data-bind="text:task.webModule"></span>
                                 </td>
+                                <td data-bind="text:task.taskNums"></td>
+                                <td data-bind="text:task.dataNums"></td>
                                 <td>
-                                    xxx新车上市舆情
+                                    <span data-bind="text:task.startDate"></span>
+                                    -
+                                    <span data-bind="text:task.endDate"></span>
                                 </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
+                                <td data-bind="text:task.createUser"></td>
+                                <td data-bind="text:task.createDate"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -128,8 +119,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="main-section">
                 <div class="main-section-header">
-                    <img width="17" height="17" src="../../img/i-2.png" />详细信息
-                    <a href="#" class="link right">下载</a>
+                    <img width="17" height="17" src="application/img/i-2.png" />详细信息
+                    <a class="link right" data-bind="attr:{'href':task.downloadUrl}">下载</a>
                 </div>
                 <div class="main-section-body text-center">
                     <div class="form form-top form-block text-right">
@@ -143,331 +134,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <td>
-                                    项目ID
-                                </td>
-                                <td>
-                                    标题
-                                </td>
-                                <td>
-                                    Url地址
-                                </td>
-                                <td>
-                                    任务状态
-                                </td>
-                                <td>
-                                    预估量级
-                                </td>
-                                <td>
-                                    预估时间
-                                </td>
-                                <td>
-                                    执行周期
-                                </td>
-                                <td>
-                                    创建人
-                                </td>
-                                <td>
-                                    创建时间
-                                </td>
+                            <tr data-bind="foreach:{ data: columns, as: 'column' }">
+                                <td data-bind="text:column.title"></td>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody data-bind="foreach:{ data: detailList, as: 'detail' }">
                             <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    C201512220001
-                                </td>
-                                <td>
-                                    xxx新车上市舆情
-                                </td>
-                                <td>
-                                    汽车之家-论坛
-                                </td>
-                                <td>
-                                    1/56
-                                </td>
-                                <td>
-                                    56000
-                                </td>
-                                <td>
-                                    0天1小时
-                                </td>
-                                <td>
-                                    20151001-20151030
-                                </td>
-                                <td>
-                                    xxx@pagechoice.com
-                                </td>
-                                <td>
-                                    2015-12-22
-                                </td>
-                            </tr>
+                                <td data-bind="text:detail.id"></td>
+                                <td data-bind="text:detail.title"></td>
+                                <td data-bind="text:detail.url"></td>
+                                <td data-bind="text:detail.type"></td>
+                                <td data-bind="text:detail.author"></td>
+                                <td data-bind="text:detail.authorId"></td>
+                                <td data-bind="text:detail.postTime"></td>
+                                <td data-bind="text:detail.views"></td>
+                                <td data-bind="text:detail.replys"></td>
+                                <td data-bind="text:detail.text"></td>
+                                <td data-bind="text:detail.forumId"></td>
+                                <td data-bind="text:detail.projectName"></td>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="10">
+                                <td colspan="12">
                                     <div class="table-page">
                                         <a href="#">上一页</a>
                                         <a href="#">1</a>
@@ -492,7 +180,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="../../js/requirejs/require.min.js"></script>
-    <script type="text/javascript" src="../../js/requirejs/main.js"></script>
+    <script type="text/javascript" src="application/js/requirejs/require.min.js"></script>
+    <script type="text/javascript" src="application/js/requirejs/main.js"></script>
+    <script>
+        require(['common', 'app'], function (common, controller) {
+
+            common.setCurrentInfo();
+
+            var option = common.getDataDetailOption();
+            option.dbBean = common.getRequestParam("dbBeant");
+            option.taskId = common.getRequestParam("taskId");
+            option.tableName = common.getRequestParam("tableName");
+            controller.getTaskDetail(option);
+
+            common.setLeftNavHeight();
+
+            
+        });
+    </script>
 </body>
 </html>

@@ -2,24 +2,30 @@
     baseUrl: Config.BaseUrl + "js/",
     paths: {
         'jquery': 'jquery/jquery-1.11.1.min',
-        'jqueryUI': 'jquery-ui/jquery-ui.min',
         'common': 'asset/common',
         'view': 'asset/view',
-        'model': 'asset/model',
         'service': 'asset/service',
-        'view-model': 'asset/view-model',
+        'app': 'asset/app',
+        'config': 'asset/config',
         'knockout': 'knockout/knockout-3.4.0',
+        'kendo': 'kendo-ui/kendo.all.min',
+        'knockout-kendo': 'kendo-ui/knockout-kendo.min',
         'testData': 'asset/testData',
     },
     shim: {
         'common': {
-            deps: ['jquery']
+            deps: ['jquery', 'config']
         },
         'view': {
             deps: ['knockout']
         },
-        'jqueryUI': {
-            deps: ['jquery', 'css!./jquery-ui/jquery-ui.min.css']
+        'knockout-kendo': {
+            deps: [
+                'kendo',
+                'kendo-ui/cultures/kendo.culture.zh-CN.min',
+                'css!./kendo-ui/kendo.common.min.css',
+                'css!./kendo-ui/kendo.default.min.css'
+            ]
         }
     },
     map: {

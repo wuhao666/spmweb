@@ -14,9 +14,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="application/css/style.css" rel="stylesheet" />
     <script>
         Config = {
-            BaseUrl: "<%=basePath %>application/",
-            ServiceUrl:"<%=basePath %>",
-            currentUser: "xxxx@hylink.com"
+            BaseUrl: "<%=basePath %>",
+            currentUser: "xxxx@hylink.com",
+            logoutUrl: function () {
+                return Config.BaseUrl + "logout.do";
+            }
         }
     </script>
 </head>
@@ -57,21 +59,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="main-header">
             <div class="main-header-title">
                 <span class="text-left">
-                    <input type="button" class="btn btn-submit" data-bind="click:createTask" value="创建新任务" />
+                    <input type="button" class="btn btn-submit" value="创建新任务" />
                 </span>
                 <span class="right form form-top">
                     <span class="form-title">名称/编号：</span>
                     <span class="form-control">
-                        <input type="text" data-bind="value:searchTitle" placeholder="请输入任务名称或编号" />
+                        <input type="text" placeholder="请输入任务名称或编号" value="" />
                     </span>
                     <span class="form-title">创建时间：</span>
                     <span class="form-control">
-                        <input data-bind="kendoDatePicker: startDate" />
-                        -
-                        <input data-bind="kendoDatePicker: endDate" />
+                        <input type="text" />-<input type="text" />
                     </span>
                     <span class="form-control">
-                        <input type="button" data-bind="click:Search" class="btn btn-submit" value="搜索" />
+                        <input type="button" class="btn btn-submit" value="搜索" />
                     </span>
                 </span>
             </div>
@@ -115,11 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <tr>
                                 <td data-bind="text:task.taskId"></td>
                                 <td data-bind="text:task.taskName"></td>
-                                <td>
-                                    <span data-bind="text:task.webName"></span>
-                                    -
-                                    <span data-bind="text:task.webModule"></span>
-                                </td>
+                                <td data-bind="text:task.webName"></td>
                                 <td data-bind="text:task.taskNums"></td>
                                 <td data-bind="text:task.dataNums"></td>
                                 <td>
@@ -133,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul data-bind="foreach:{ data: task.lolthTaskDetail, as: 'detail' }">
                                         <li>
                                             <span>
-                                                <a href="#" class="link" data-bind="text:detail.tableNameCn,attr:{'href':$root.openDetail(task.taskId,detail.classBean,detail.tableName)}"></a>
+                                                <a href="#" class="link" data-bind="text:detail.tableNameCn,attr:{'data-tableName':detail.tableName,'data-classBean':detail.classBean}"></a>
                                             </span>
                                             <span data-bind="visible:detail.downloadUrl" class="line"></span>
                                             <span data-bind="if:detail.downloadUrl">
@@ -156,6 +152,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <a href="#" data-bind="click:GetPage">42</a>
                                         <a href="#" data-bind="click:GetPage">43</a>
                                         <a href="#" data-bind="click:GetPage">44</a>
+                                        <a href="#" data-bind="click:GetPage">45</a>
+                                        <a href="#" data-bind="click:GetPage">46</a>
+                                        <a href="#" data-bind="click:GetPage">47</a>
                                         <span>...</span>
                                         <a href="#" data-bind="click:LastPage">60</a>
                                         <a href="#" data-bind="click:NextPage">下一页</a>
@@ -171,11 +170,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="application/js/requirejs/require.min.js"></script>
     <script type="text/javascript" src="application/js/requirejs/main.js"></script>
     <script>
-        require(['common', 'app'], function (common, controller) {
+        require(['common', 'view-model'], function (common, controller) {
+
             common.setCurrentInfo();
-            var option = common.getSearchOption();
+
+            var option = GetOption();
             controller.getTaskManager(option);
+
             common.setLeftNavHeight();
+
+            function GetOption() {
+                var option = {};
+
+                option.search = {};
+                option.search.name = '';
+                option.search.startDate = '';
+                option.search.endDate = '';
+
+                option.page = {};
+                option.page.pageSize = "10";
+                option.page.currentPage = "1";
+
+                return option;
+            }
         });
     </script>
 </body>

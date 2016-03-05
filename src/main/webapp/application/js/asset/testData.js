@@ -665,3 +665,269 @@
         }
     }
 }
+
+function GetWebList() {
+    return [
+        {
+            createUser: "wuhao",
+            forumUrl: "http://club.autohome.com.cn/bbs/forum-c-{0}-1.html?orderby=dateline&qaType=-1",
+            isDelete: "0",
+            webClass: "lolthx.autohome.bbs.AutoHomeBBSListProducer",
+            webId: 1,
+            webModule: "论坛",
+            webModuleType: "1",
+            webName: "汽车之家",
+            webType: "论坛",
+            webUrl: "http://club.autohome.com.cn"
+        }, {
+            createUser: "wuhao",
+            forumUrl: "http://club.autohome.com.cn/bbs/forum-c-{0}-1.html?orderby=dateline&qaType=-1",
+            isDelete: "0",
+            webClass: "lolthx.autohome.bbs.AutoHomeBBSListProducer",
+            webId: 2,
+            webModule: "论坛",
+            webModuleType: "1",
+            webName: "易车网",
+            webType: "论坛",
+            webUrl: "http://club.autohome.com.cn"
+        }, {
+            createUser: "wuhao",
+            forumUrl: "http://club.autohome.com.cn/bbs/forum-c-{0}-1.html?orderby=dateline&qaType=-1",
+            isDelete: "0",
+            webClass: "lolthx.autohome.bbs.AutoHomeBBSListProducer",
+            webId: 3,
+            webModule: "论坛",
+            webModuleType: "1",
+            webName: "新浪汽车",
+            webType: "论坛",
+            webUrl: "http://club.autohome.com.cn"
+        }, {
+            createUser: "wuhao",
+            forumUrl: "http://club.autohome.com.cn/bbs/forum-c-{0}-1.html?orderby=dateline&qaType=-1",
+            isDelete: "0",
+            webClass: "lolthx.autohome.bbs.AutoHomeBBSListProducer",
+            webId: 4,
+            webModule: "论坛",
+            webModuleType: "1",
+            webName: "网易汽车",
+            webType: "论坛",
+            webUrl: "http://club.autohome.com.cn"
+        }, {
+            createUser: "wuhao",
+            forumUrl: "http://club.autohome.com.cn/bbs/forum-c-{0}-1.html?orderby=dateline&qaType=-1",
+            isDelete: "0",
+            webClass: "lolthx.autohome.bbs.AutoHomeBBSListProducer",
+            webId: 5,
+            webModule: "论坛",
+            webModuleType: "1",
+            webName: "未命名",
+            webType: "论坛",
+            webUrl: "http://club.autohome.com.cn"
+        }
+    ];
+}
+
+function GetTask() {
+    return {
+        createDate: "2015-01-21 00:00:00.0",
+        createUser: "wuhao",
+        data: "[{\"id\":\"1\",\"keyword\":\"test1\"},{\"id\":\"2\",\"keyword\":\"test2\"},{\"id\":\"3\",\"keyword\":\"test3\"}]",
+        dataNums: "0",
+        detailType: "频道",
+        endDate: "2015-12-31",
+        lolthTaskDetail: [
+          {
+              classBean: "lolthx.autohome.bbs.bean.AutoHomeBBSBean",
+              id: 17,
+              main: "1",
+              order: "1",
+              tableName: "data_autohome_bbs_C20160108023015033322",
+              tableNameCn: "主贴信息",
+              taskId: "C20160105035257030498"
+          }
+        ],
+        remark: " test ",
+        startDate: "2015-01-01",
+        taskId: "C20160105035257030498",
+        taskName: "汽车之家爬取-C20160105035257030498",
+        taskNums: "14/47",
+        taskType: "0",
+        webId: "1",
+        webModule: "论坛",
+        webName: "汽车之家"
+    };
+}
+
+function GetTaskDetailList() {
+    return {
+        data: [
+          {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }, {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }, {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }, {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }, {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }, {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }, {
+              id: "1",
+              title: "1",
+              url: "1",
+              type: "icon_05",
+              author: "1",
+              authorId: "11202397",
+              postTime: "2015-08-10",
+              views: "1",
+              replys: "1",
+              text: "1",
+              forumId: "200200",
+              projectName: "埃尼比稿-汽车之家-20151216",
+              keyword: "机油专家"
+          }
+        ],
+        column: [
+          {
+              id: "ID"
+          }, {
+              title: "标题"
+          }, {
+              url: "链接"
+          }, {
+              type: "类型"
+          }, {
+              author: "用户"
+          }, {
+              authorId: "用户ID"
+          }, {
+              postTime: "发布时间"
+          }, {
+              views: "点击量"
+          }, {
+              replys: "回复"
+          }, {
+              text: "文本"
+          }, {
+              forumId: "频道ID"
+          }, {
+              projectName: "项目名称"
+          }, {
+              keyword: "关键字"
+          }
+        ],
+        page: {
+            recordCount: "32",
+            pageSize: "15",
+            currentPage: "1"
+        }
+    };
+}
+
+function GetForumList() {
+    return {
+        data: [{
+            createDate: "2016-02-17 15:50:37.0",
+            createUser: "wuhao",
+            forumId: "1000",
+            id: 1,
+            isDelete: "1",
+            keyword: "测试1",
+            url: "http://baidu.com",
+            webId: 1
+        }, {
+            createUser: "wuhao",
+            forumId: "1001",
+            id: 2,
+            isDelete: "0",
+            keyword: "Test1",
+            webId: 1
+        }, {
+            createUser: "wuhao",
+            forumId: "1002",
+            id: 10,
+            isDelete: "0",
+            keyword: "Test1",
+            webId: 1
+        }],
+        page: {
+            recordCount: "3",
+            pageSize: "10",
+            currentPage: "1"
+        }
+    };
+}

@@ -42,8 +42,20 @@ public class WebContrastDaoImpl implements WebContrastDao {
 	 */
 	public List<WebContrast> getWebContrastList(Map<String, String> map) {
 		StringBuilder sqlBuilder = new StringBuilder();
-		sqlBuilder.append(" select * ");
-		sqlBuilder.append(" from web_contrast  ");
+		sqlBuilder.append(" select "); 
+		sqlBuilder.append(" a.webId, "); 
+		sqlBuilder.append(" CONCAT(a.webName,'-',a.webModule) as webName, "); 
+		sqlBuilder.append(" a.webModule, "); 
+		sqlBuilder.append(" a.webModuleType, "); 
+		sqlBuilder.append(" a.webType, "); 
+		sqlBuilder.append(" a.webUrl, "); 
+		sqlBuilder.append(" a.forumUrl, "); 
+		sqlBuilder.append(" a.webClass, "); 
+		sqlBuilder.append(" a.remark, "); 
+		sqlBuilder.append(" a.createUser, "); 
+		sqlBuilder.append(" a.createDate, "); 
+		sqlBuilder.append(" a.isDelete "); 
+		sqlBuilder.append(" from web_contrast a"); 
 		sqlBuilder.append(" where 1=1 ");
 		if(map.get("webName") != null && !"".equals(map.get("webName"))){
 			 sqlBuilder.append(" and CONCAT(a.webName,'-',a.webModule) like '%" + map.get("webName")  + "%'  ");

@@ -4,17 +4,18 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<base href="<%=basePath%>">
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <title>创建新任务</title>
-    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="application/css/style.css" rel="stylesheet" />
     <style>
         .main-section-body {
             padding-top: 50px;
-            width: 450px;
+            width: 550px;
             margin: auto;
         }
 
@@ -22,23 +23,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             width: 100%;
         }
     </style>
+    <script>
+        Config = {
+        		BaseUrl: "<%=basePath %>application/",
+                ServiceUrl:"<%=basePath %>",
+            	currentUser: "xxxx@hylink.com"
+        }
+    </script>
 </head>
 <body>
     <header class="header">
         <div class="datavenus left">
-            <img src="../../img/datavenus.png" width="176" height="31" />
+            <img src="application/img/datavenus.png" width="176" height="31" />
         </div>
         <div class="info right">
             <ul class="info-list">
                 <li>
-                    <span class="account">xxxx@hylink.com</span>
+                    <span class="account"></span>
                 </li>
                 <li>
                     <span class="line"></span>
                 </li>
                 <li>
                     <span class="logout">
-                        <a href="<%=basePath%>/logout.do" class="link">
+                        <a href="" class="link">
                             退出
                         </a>
                     </span>
@@ -48,28 +56,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </header>
     <div class="left-nav">
         <ul>
-            <li>
-                <a href="../task/taskmanager.html">
-                    <img src="../../img/l-manager.png" width="21" height="21" />
-                    <span>任务管理</span>
-                </a>
-            </li>
             <li class="on">
-                <a href="../task/createtask.html">
-                    <img src="../../img/l-create.png" width="21" height="21" />
-                    <span>创建新任务</span>
-                </a>
-            </li>
-            <li>
-                <a href="./tool.html">
-                    <img src="../../img/l-tool.png" width="21" height="21" />
-                    <span>分词工具</span>
-                </a>
-            </li>
-            <li>
-                <a href="./report.html">
-                    <img src="../../img/l-report.png" width="21" height="21" />
-                    <span>数据报告</span>
+                <a href="../task/taskmanager.html">
+                    <img src="application/img/l-manager.png" width="21" height="21" />
+                    <span>任务管理</span>
                 </a>
             </li>
         </ul>
@@ -86,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             任务名称：
                         </div>
                         <div class="form-control form-control-long">
-                            <input type="text" class="input" />
+                            <input type="text" class="input" data-bind="text:taskName" />
                         </div>
                     </div>
                     <div class="form form-group">
@@ -94,7 +84,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             任务周期：
                         </div>
                         <div class="form-control form-control-long">
-                            <input type="text" class="input" />
+                            <input class="datetime" data-bind="kendoDatePicker: startDate" />
+                            <span class="line">--</span>
+                            <input class="datetime" data-bind="kendoDatePicker: endDate" />
                         </div>
                     </div>
                     <div class="form form-group">
@@ -102,27 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             平台选择：
                         </div>
                         <div class="form-control">
-                            <dis class="select">
-                                <input class="root-select" type="text" readonly="readonly" data-value="-1" value="请选择平台" id="ddlSelectPlatform" />
-                                <ul class="sub-select" style="display: none;">
-                                    <li>
-                                        <span data-value="0">汽车之家-论坛</span>
-                                    </li>
-                                    <li>
-                                        <span data-value="1">易车网-论坛</span>
-                                    </li>
-                                    <li>
-                                        <span data-value="2">新浪-论坛</span>
-                                    </li>
-                                    <li>
-                                        <span data-value="3">网易-论坛</span>
-                                    </li>
-                                    <li>
-                                        <span data-value="4">xxx-论坛</span>
-                                    </li>
-                                </ul>
-                            </dis>
-                            <a href="#" class="link">前往</a>
+                            <div class="select">
+                                <input class="root-select" data-bind="kendoDropDownList: { dataTextField: 'webName', dataValueField: 'webId', data: webList.data, value: webList.selected }" />
+                            </div>
+                            <a href="#" class="link" target="_blank" data-bind="attr:{'href':webList.link(webList.selected)}">前往</a>
                         </div>
                     </div>
                     <div class="form form-group">
@@ -144,61 +119,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody data-bind="foreach:{ data: ForumList, as: 'forum' }">
                                     <tr>
-                                        <td>
-                                            奥迪
-                                        </td>
-                                        <td>
-                                            1111
-                                        </td>
-                                        <td>
-                                            <a href="#" class="link">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            奥迪
-                                        </td>
-                                        <td>
-                                            1111
-                                        </td>
-                                        <td>
-                                            <a href="#" class="link">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            奥迪
-                                        </td>
-                                        <td>
-                                            1111
-                                        </td>
-                                        <td>
-                                            <a href="#" class="link">删除</a>
-                                        </td>
+                                        <td data-bind="text:forum.keyword,attr:{'contenteditable':true}"></td>
+                                        <td data-bind="text:forum.forumId,attr:{'contenteditable':true}"></td>
+                                        <!-- <td>
+                                            <a href="#" data-bind="click:$root.DeleteForum">删除</a>
+                                            <a href="#" data-bind="click:SubmitForum">确认</a>
+                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="text-left">
-                                <a href="#" class="link">新增</a><a href="#" class="link">导入已保存频道</a>
+                                <a href="#" class="link" data-bind="click:AddForum">新增</a>
+                                <a href="#" class="link">导入已保存频道</a>
                             </div>
                         </div>
 
                     </div>
                     <div class="form form-submit">
-                        <input type="button" class="btn btn-submit" value="创建" />
+                        <input type="button" class="btn btn-submit" data-bind="click:CreateTask" value="创建" />
                         <input type="button" class="btn btn-cancel" value="清空" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../../js/jquery/jquery-1.11.1.min.js"></script>
-    <script src="../../js/backbone/underscore-min.js"></script>
-    <script src="../../js/backbone/backbone-min.js"></script>
-    <script src="../../js/asset/common.js"></script>
+    <script type="text/javascript" src="application/js/requirejs/require.min.js"></script>
+    <script type="text/javascript" src="application/js/requirejs/main.js"></script>
     <script>
+        require(['common', 'app'], function (common, controller) {
+            common.setCurrentInfo();
+            controller.createTask();
+            common.setLeftNavHeight();
+        });
     </script>
 </body>
 </html>

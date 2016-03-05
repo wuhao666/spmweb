@@ -64,10 +64,20 @@
     }
 
     .form-control-long {
-        width: 300px;
+        width: 360px;
 
         input {
             width: 100%;
+        }
+
+        .datetime, .line {
+            float: left;
+        }
+
+        .line {
+            padding-left: 3px;
+            padding-right: 3px;
+            padding-top: 5px;
         }
     }
 }
