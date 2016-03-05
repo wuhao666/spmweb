@@ -1,0 +1,45 @@
+﻿.main {
+    min-height: 400px;
+    margin-left: 190px;
+
+    .main-header {
+        line-height: 65px;
+        background-color: $globalForthFontColor;
+
+        .main-header-title {
+            font-size: $globalThirdFontSize;
+            color: $globalFontColor;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+
+    .main-body {
+        padding: 20px;
+
+        .main-section {
+            border: 1px solid $globalSecondBackgroundColor;
+            background-color: $globalSecondBackgroundColor;
+
+            .main-section-header {
+                padding-left: 40px;
+                padding-right: 40px;
+                line-height: 40px;
+                font-size: $globalThirdFontSize;
+                color: $globalMainColor;
+                background-color: #e9e9e9;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    top: 12px;
+                    left: 20px;
+                }
+            }
+
+            .main-section-body {
+                padding-bottom: 40px;
+            }
+        }
+    }
+}

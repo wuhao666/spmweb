@@ -1,0 +1,45 @@
+﻿.left-nav {
+    width: 190px;
+    float: left;
+    background-color: $globalBackgroundColor;
+    text-align: left;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    ul {
+        li {
+            line-height: 65px;
+            border-top: 1px solid #8773b1;
+            position: relative;
+            color: $globalButtonFontColor;
+            cursor: pointer;
+
+            img {
+                position: absolute;
+                top: 22px;
+            }
+
+            span {
+                padding-left: 30px;
+            }
+
+            a, a:hover, a:visited {
+                padding-left: 40px;
+                text-decoration: none;
+                color: inherit;
+                display: block;
+            }
+        }
+
+        li:hover {
+            color: #dd85ff;
+            background-color: #4f1f5d;
+        }
+
+        .on {
+            background-color: #4f1f5d;
+            color: #dd85ff;
+        }
+    }
+}

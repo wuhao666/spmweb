@@ -1,0 +1,103 @@
+﻿.table {
+    width: 100%;
+    background-color: #ffffff;
+    color: #999999;
+    border: 1px solid #ffffff;
+    font-size: $globalFontSize;
+
+    tr {
+        height: 30px;
+        text-align: center;
+    }
+
+    tr:nth-child(2n+1) {
+    }
+
+    tr:nth-child(2n) {
+        background-color: #fafafa;
+    }
+
+    td {
+        vertical-align: middle;
+        border: 1px solid #ffffff;
+        position: relative;
+    }
+
+    .td-operation {
+        width: 130px;
+
+        ul {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+
+            li {
+                line-height: 20px;
+
+                .line {
+                    width: 1px;
+                    height: 18px;
+                    border-left: 1px solid #b7b2b9;
+                    position: absolute;
+                }
+
+                .link {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    display: inline-block;
+                    color: inherit !important;
+                    text-decoration: none !important;
+                }
+
+                .link:hover {
+                    color: $globalLinkFontColor !important;
+                    text-decoration: underline !important;
+                }
+            }
+        }
+    }
+
+    thead {
+        td {
+            background-color: $globalForthBackgroundColor;
+            color: $globalSecondFontColor;
+            height: 30px;
+            font-size: $globalSecondFontSize;
+        }
+    }
+
+    tbody {
+        tr:hover {
+            background-color: $globalThirdBackgroundColor;
+        }
+    }
+
+    tfoot {
+        td {
+            background-color: $globalForthBackgroundColor;
+            height: 45px;
+            line-height: 45px;
+            font-size: $globalSecondFontSize;
+
+            a, a:visited, a:hover {
+                text-decoration: none;
+            }
+
+            a {
+                padding: 0 3px;
+            }
+
+            .link {
+                padding: 0 10px;
+            }
+
+            span {
+                padding: 0 10px;
+            }
+
+            .on, .on:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

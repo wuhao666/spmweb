@@ -1,0 +1,52 @@
+﻿.header {
+    height: 65px;
+    background-color: $globalMainColor;
+    text-align: center;
+
+    .datavenus {
+        padding-top: 15px;
+        padding-left: 15px;
+    }
+
+    .logo, .info {
+        padding-right: 20px;
+    }
+
+    .logo {
+        padding-top: 20px;
+    }
+
+    .info {
+        line-height: 64px;
+
+        .info-list {
+            list-style: none;
+
+            li {
+                float: left;
+                text-align: center;
+
+                span {
+                    display: inline-block;
+                }
+
+                .logout {
+                    width: 75px;
+                }
+
+                .account {
+                    min-width: 150px;
+                    color: $globalButtonFontColor;
+                }
+
+                .line {
+                    width: 1px;
+                    height: 18px;
+                    border-left: 1px solid #b7b2b9;
+                    position: absolute;
+                    top: 23px;
+                }
+            }
+        }
+    }
+}

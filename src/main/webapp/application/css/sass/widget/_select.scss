@@ -1,0 +1,30 @@
+﻿.select {
+    position: relative;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-block;
+
+    .root-select {
+        background-image: url("../img/arrow.png");
+        background-repeat: no-repeat;
+        background-position: 95% center;
+        cursor: pointer;
+    }
+
+    .sub-select {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        border: 1px solid #c9c9c9;
+        color: $globalThirdFontColor;
+
+        li {
+            line-height: 24px;
+            background-color: #ffffff;
+        }
+
+        li:hover {
+            background-color: #ededed;
+        }
+    }
+}

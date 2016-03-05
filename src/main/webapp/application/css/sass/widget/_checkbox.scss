@@ -1,0 +1,51 @@
+﻿.checkbox {
+    float: left;
+    padding-right: 30px;
+    position: relative;
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    .checkboxinput input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+}
+
+.checkbox-default {
+    .checkboxinput label {
+        cursor: pointer;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: 0;
+        left: 0;
+        background-color: inherit;
+        border: 1px solid $globalThirdBackgroundColor;
+    }
+
+    .checkboxlabel {
+        display: block;
+        color: #ffffff;
+        padding-left: 30px;
+    }
+
+    .checkboxinput label:after {
+        opacity: 0;
+        content: ' ';
+        position: absolute;
+        width: 8px;
+        height: 4px;
+        background: transparent;
+        top: 2px;
+        left: 1px;
+        border: 1px solid #ffffff;
+        border-top: none;
+        border-right: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+}

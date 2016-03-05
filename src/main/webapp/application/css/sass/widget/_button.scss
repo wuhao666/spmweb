@@ -1,0 +1,21 @@
+.btn {
+    height: 24px;
+    width: 98px;
+    border-width: 0px;
+    border-radius: 30px;
+    color: $globalButtonFontColor !important;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn:active {
+    border-width: 1px;
+}
+
+.btn-submit {
+    background-color: #9f35cd;
+}
+
+.btn-cancel {
+    background-color: #938f95;
+}

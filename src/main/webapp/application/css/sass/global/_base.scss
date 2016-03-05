@@ -1,0 +1,47 @@
+﻿$globalFontSize: 12px !default;
+$globalSecondFontSize: 14px !default;
+$globalThirdFontSize: 16px !default;
+
+$globalFontFamily: '微软雅黑' !default;
+$globalSenondFontFamily: "宋体" !default;
+
+$globalMainColor: #6f3381 !default;
+
+$globalFontColor: #505050 !default;
+$globalSecondFontColor: #666666 !default;
+$globalThirdFontColor: #999999 !default;
+$globalForthFontColor: #dfcde7 !default;
+$globalLinkFontColor: #cf5fff !default;
+$globalButtonFontColor: #ffffff !default;
+
+$globalBackgroundColor: #6f3381 !default;
+$globalSecondBackgroundColor: #f9f9f9 !default;
+$globalThirdBackgroundColor: #f3f3f3 !default;
+$globalForthBackgroundColor: #ededed !default;
+
+
+$globaMinHeight: 500px;
+$globaMinWidth: 1200px;
+
+html {
+    font-family: $globalFontFamily;
+    font-size: $globalSecondFontSize;
+    width: 100%;
+    height: 100%;
+    min-width: $globaMinWidth;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: $globalThirdBackgroundColor;
+    color: $globalSecondFontColor;
+}
+
+*:before {
+    clear: both;
+}
+
+*:after {
+    clear: both;
+}
